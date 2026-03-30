@@ -183,7 +183,7 @@ function showLoading() {
   gallery.innerHTML = `
     <div class="loading-state">
       <div class="loading-spinner"></div>
-      <p>🔄 Loading space photos…</p>
+      <p>Loading space photos…</p>
     </div>
   `;
 }
@@ -192,7 +192,6 @@ function showError(msg) {
   const gallery = document.getElementById('gallery');
   gallery.innerHTML = `
     <div class="placeholder">
-      <div class="placeholder-icon">⚠️</div>
       <p>${msg}</p>
     </div>
   `;

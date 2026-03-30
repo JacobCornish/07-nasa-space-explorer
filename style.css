@@ -4,37 +4,35 @@
      NASA Blue  #0B3D91
      NASA Red   #FC3D21
      White      #FFFFFF
-     Black      #000000
-     Dark BG    #0a0a12  (deep space)
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── CSS Variables ─────────────────────────────────────────────── */
 :root {
   --nasa-blue:      #0B3D91;
-  --nasa-blue-mid:  #1252b8;
-  --nasa-blue-dark: #071f4a;
+  --nasa-blue-hover:#0d47a8;
+  --nasa-blue-dark: #061a3a;
   --nasa-red:       #FC3D21;
-  --nasa-red-dark:  #c9280e;
-  --space-dark:     #06080f;
-  --space-mid:      #0e1220;
-  --space-surface:  #141828;
-  --card-bg:        #1a2035;
-  --card-border:    rgba(255,255,255,0.07);
-  --text-primary:   #ffffff;
-  --text-secondary: #a8b4d0;
-  --text-dim:       #6b7a9e;
-  --gold-accent:    #f7c948;
+  --nasa-red-hover: #e02e14;
 
-  --font-display: 'Barlow Condensed', 'Impact', sans-serif;
-  --font-body:    'Barlow', 'Helvetica Neue', sans-serif;
+  --page-bg:        #111827;
+  --surface-1:      #1c2333;
+  --surface-2:      #232d42;
+  --border:         rgba(255,255,255,0.09);
+  --border-strong:  rgba(255,255,255,0.18);
 
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --text-primary:   #f0f2f5;
+  --text-secondary: #8d9ab5;
+  --text-dim:       #5a6a87;
 
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.45);
-  --shadow-hover: 0 8px 40px rgba(11, 61, 145, 0.4);
-  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-display: 'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Source Sans 3', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.35);
+  --transition: 0.2s ease;
 }
 
 /* ── Reset & Base ─────────────────────────────────────────────── */
@@ -48,48 +46,35 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--space-dark);
+  background-color: var(--page-bg);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
-  /* Subtle star-field texture via radial gradients */
-  background-image:
-    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.55) 0%, transparent 100%),
-    radial-gradient(1px 1px at 34% 62%, rgba(255,255,255,0.4)  0%, transparent 100%),
-    radial-gradient(1px 1px at 67% 29%, rgba(255,255,255,0.5)  0%, transparent 100%),
-    radial-gradient(1px 1px at 81% 75%, rgba(255,255,255,0.35) 0%, transparent 100%),
-    radial-gradient(1px 1px at 52% 88%, rgba(255,255,255,0.45) 0%, transparent 100%),
-    radial-gradient(1px 1px at 6%  92%, rgba(255,255,255,0.3)  0%, transparent 100%),
-    radial-gradient(1px 1px at 93% 10%, rgba(255,255,255,0.45) 0%, transparent 100%),
-    radial-gradient(2px 2px at 74% 48%, rgba(255,255,255,0.2)  0%, transparent 100%),
-    linear-gradient(180deg, #06080f 0%, #0a0e1a 60%, #06080f 100%);
-  background-attachment: fixed;
 }
 
 /* ── Header ─────────────────────────────────────────────────────── */
 .site-header {
-  background: linear-gradient(135deg, var(--nasa-blue-dark) 0%, var(--nasa-blue) 60%, #1a54b8 100%);
+  background-color: var(--nasa-blue);
   border-bottom: 3px solid var(--nasa-red);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 30px rgba(11, 61, 145, 0.6);
 }
 
 .header-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 14px 24px;
 }
 
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .logo {
-  height: 52px;
+  height: 46px;
   width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
@@ -99,62 +84,62 @@ body {
 .header-title-wrap {
   display: flex;
   flex-direction: column;
+  border-left: 1px solid rgba(255,255,255,0.3);
+  padding-left: 16px;
 }
 
 .site-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
   color: #ffffff;
-  text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .site-subtitle {
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: rgba(255,255,255,0.65);
-  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 /* ── Container ─────────────────────────────────────────────────── */
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px 60px;
+  padding: 0 24px 60px;
 }
 
 /* ── Fact Banner ───────────────────────────────────────────────── */
 .fact-banner {
-  margin: 32px 0 28px;
-  background: linear-gradient(135deg, var(--space-surface) 0%, rgba(11,61,145,0.25) 100%);
-  border: 1px solid rgba(11, 61, 145, 0.5);
-  border-left: 4px solid var(--nasa-blue-mid);
+  margin: 28px 0 24px;
+  background-color: var(--surface-1);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--nasa-blue);
   border-radius: var(--radius-md);
-  padding: 18px 22px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  animation: fadeSlideIn 0.6s ease both;
+  gap: 6px;
 }
 
 .fact-label {
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--nasa-blue-mid);
+  color: var(--text-dim);
 }
 
 .fact-body {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   color: var(--text-secondary);
-  line-height: 1.55;
+  line-height: 1.5;
   flex-wrap: wrap;
   display: flex;
   gap: 6px;
@@ -162,17 +147,15 @@ body {
 }
 
 .fact-term {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: 0.03em;
   flex-shrink: 0;
 }
 
 .fact-sep {
   color: var(--nasa-red);
-  font-weight: 700;
+  font-weight: 400;
   flex-shrink: 0;
 }
 
@@ -182,7 +165,7 @@ body {
 
 /* ── Controls ─────────────────────────────────────────────────── */
 .controls {
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 
 .controls-inner {
@@ -195,16 +178,15 @@ body {
 .date-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   flex: 1 1 160px;
   min-width: 150px;
 }
 
 .date-group label {
-  font-family: var(--font-display);
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-dim);
 }
@@ -213,83 +195,74 @@ input[type="date"] {
   font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--text-primary);
-  background: var(--space-surface);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  padding: 11px 14px;
+  padding: 10px 13px;
   width: 100%;
   cursor: pointer;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color var(--transition);
   color-scheme: dark;
 }
 
 input[type="date"]:hover {
-  border-color: var(--nasa-blue-mid);
+  border-color: rgba(255,255,255,0.35);
 }
 
 input[type="date"]:focus {
   outline: none;
-  border-color: var(--nasa-blue-mid);
-  box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.35);
+  border-color: var(--nasa-blue);
+  box-shadow: 0 0 0 2px rgba(11, 61, 145, 0.4);
 }
 
 .btn-primary {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #ffffff;
-  background: linear-gradient(135deg, var(--nasa-red) 0%, var(--nasa-red-dark) 100%);
+  background-color: var(--nasa-blue);
   border: none;
   border-radius: var(--radius-sm);
-  padding: 12px 28px;
+  padding: 11px 26px;
   cursor: pointer;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-  box-shadow: 0 4px 18px rgba(252, 61, 33, 0.35);
+  transition: background-color var(--transition);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(252, 61, 33, 0.55);
-  background: linear-gradient(135deg, #ff5038 0%, var(--nasa-red) 100%);
+  background-color: var(--nasa-blue-hover);
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  background-color: var(--nasa-blue-dark);
 }
-
-.btn-icon { font-size: 1.1em; }
 
 /* ── Gallery ─────────────────────────────────────────────────── */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 22px;
+  gap: 20px;
 }
 
 /* ── Gallery Card ─────────────────────────────────────────────── */
 .gallery-item {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
-  animation: cardReveal 0.5s ease both;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  animation: cardReveal 0.4s ease both;
 }
 
 .gallery-item:hover {
-  transform: translateY(-6px) scale(1.015);
-  box-shadow: var(--shadow-hover);
-  border-color: rgba(11, 61, 145, 0.5);
+  border-color: var(--border-strong);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 /* Hover Zoom Effect on image */
@@ -297,7 +270,7 @@ input[type="date"]:focus {
   overflow: hidden;
   height: 210px;
   position: relative;
-  background: var(--space-mid);
+  background: var(--surface-2);
   flex-shrink: 0;
 }
 
@@ -306,11 +279,11 @@ input[type="date"]:focus {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s ease;
 }
 
 .gallery-item:hover .media-wrapper img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 /* Video badge */
@@ -318,14 +291,13 @@ input[type="date"]:focus {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(252, 61, 33, 0.9);
+  background-color: var(--nasa-red);
   color: #fff;
-  font-family: var(--font-display);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  padding: 4px 9px;
-  border-radius: 4px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
   text-transform: uppercase;
 }
 
@@ -335,9 +307,9 @@ input[type="date"]:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--space-mid), var(--space-surface));
-  font-size: 3rem;
-  color: rgba(255,255,255,0.3);
+  background-color: var(--surface-2);
+  font-size: 2.5rem;
+  color: rgba(255,255,255,0.2);
 }
 
 /* Card info */
@@ -347,22 +319,20 @@ input[type="date"]:focus {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  border-top: 1px solid var(--border);
 }
 
 .card-info h3 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.25;
-  letter-spacing: 0.01em;
+  line-height: 1.3;
 }
 
 .card-info time {
   font-size: 0.78rem;
   color: var(--text-dim);
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-weight: 400;
 }
 
 /* ── Placeholder ──────────────────────────────────────────────── */
@@ -373,10 +343,8 @@ input[type="date"]:focus {
   color: var(--text-dim);
 }
 
-.placeholder-icon { font-size: 56px; margin-bottom: 20px; }
-
 .placeholder p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   max-width: 400px;
   margin: 0 auto;
@@ -390,20 +358,21 @@ input[type="date"]:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   padding: 80px 20px;
   color: var(--text-secondary);
-  font-size: 1rem;
-  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .loading-spinner {
-  width: 52px;
-  height: 52px;
-  border: 4px solid rgba(11, 61, 145, 0.25);
-  border-top-color: var(--nasa-blue-mid);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-strong);
+  border-top-color: var(--nasa-blue);
   border-radius: 50%;
-  animation: spin 0.9s linear infinite;
+  animation: spin 0.85s linear infinite;
 }
 
 /* ── Modal ────────────────────────────────────────────────────── */
@@ -411,13 +380,12 @@ input[type="date"]:focus {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(4, 6, 14, 0.88);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
   z-index: 1000;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  animation: fadeIn 0.2s ease;
 }
 
 .modal.active {
@@ -425,16 +393,16 @@ input[type="date"]:focus {
 }
 
 .modal-box {
-  background: var(--space-surface);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
   max-width: 820px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.7);
-  animation: modalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 16px 60px rgba(0,0,0,0.6);
+  animation: modalSlideIn 0.25s ease both;
 }
 
 .modal-close {
@@ -442,23 +410,24 @@ input[type="date"]:focus {
   top: 14px;
   float: right;
   margin: 14px 14px 0 0;
-  background: rgba(255,255,255,0.1);
-  border: none;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
   color: var(--text-secondary);
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .modal-close:hover {
   background: var(--nasa-red);
+  border-color: var(--nasa-red);
   color: #fff;
 }
 
@@ -472,7 +441,7 @@ input[type="date"]:focus {
   max-height: 480px;
   object-fit: contain;
   display: block;
-  background: var(--space-dark);
+  background: #000;
 }
 
 .modal-media iframe {
@@ -489,69 +458,65 @@ input[type="date"]:focus {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  background: var(--space-dark);
+  background-color: var(--surface-2);
 }
 
 .video-link-wrap p {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .video-link-btn {
   display: inline-block;
-  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
-  background: var(--nasa-red);
-  padding: 12px 28px;
+  background-color: var(--nasa-red);
+  padding: 11px 26px;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: background var(--transition), transform var(--transition);
+  transition: background-color var(--transition);
 }
 
 .video-link-btn:hover {
-  background: var(--nasa-red-dark);
-  transform: translateY(-2px);
+  background-color: var(--nasa-red-hover);
 }
 
 .modal-content {
-  padding: 24px 28px 32px;
+  padding: 22px 26px 30px;
 }
 
 .modal-content h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 6px;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .modal-date {
   display: block;
-  font-size: 0.82rem;
-  color: var(--nasa-blue-mid);
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .modal-explanation {
   font-size: 0.95rem;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--text-secondary);
 }
 
 /* ── Footer ─────────────────────────────────────────────────── */
 .site-footer {
-  background: var(--nasa-blue-dark);
-  border-top: 2px solid rgba(11, 61, 145, 0.6);
-  padding: 24px 20px;
+  background-color: var(--nasa-blue-dark);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 22px 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -560,18 +525,20 @@ input[type="date"]:focus {
 }
 
 .footer-logo {
-  height: 28px;
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
+  height: 48px;
+  width: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0.7;
 }
 
 .site-footer p {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.4);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
 }
 
 .site-footer a {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.55);
   text-decoration: none;
 }
 
@@ -582,34 +549,24 @@ input[type="date"]:focus {
   to { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes cardReveal {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes modalSlideIn {
-  from { opacity: 0; transform: scale(0.92) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 640px) {
   .controls-inner { flex-direction: column; }
   .date-group { flex: 1 1 100%; min-width: unset; }
-  .btn-primary { width: 100%; justify-content: center; }
+  .btn-primary { width: 100%; text-align: center; }
   .gallery { grid-template-columns: 1fr; }
   .modal-box { border-radius: var(--radius-md); }
-  .modal-content { padding: 20px 18px 24px; }
+  .modal-content { padding: 18px 16px 24px; }
 }
 
 @media (max-width: 900px) {
@@ -618,11 +575,11 @@ input[type="date"]:focus {
   }
 }
 
-/* ── Scrollbar styling ─────────────────────────────────────── */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--space-dark); }
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--page-bg); }
 ::-webkit-scrollbar-thumb {
-  background: var(--nasa-blue);
+  background: var(--surface-2);
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--nasa-blue-mid); }
+::-webkit-scrollbar-thumb:hover { background: var(--nasa-blue); }
